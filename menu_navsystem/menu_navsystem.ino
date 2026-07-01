@@ -2,7 +2,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Fonts/Org_01.h>
-#include <Fonts/Org_01.h>
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -38,7 +37,7 @@ void setup()
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
-  display.setFont(&Org_01);
+  //display.setFont(&Org_01);
   display.display();
 }
 
@@ -55,6 +54,8 @@ void drawMenu()
   {
     display.setCursor(10, 14 + (i * 15));
     int actualIndex = i + scrollOffset;
+    if (actualIndex >= TOTAL_ITEMS)
+      break;
     if (actualIndex == selectedIndex)
     {
       display.print("> ");
